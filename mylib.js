@@ -54,7 +54,7 @@ function afiseazaInformatii() {
     navigator.getBattery().then(function(battery) {
         // actualizeaza statusul bateriei la inceput
         actualizeazaStatusBaterie(battery);
-        // actualizeaza statusul in cazul in care este conectat / deconectat de la transformator
+        // actualizeaza statusul in cazul in care este conectat / deconectat la incarcator
         battery.onchargingchange = function () {
           actualizeazaStatusBaterie(battery);
         };
@@ -67,6 +67,21 @@ function afiseazaInformatii() {
           actualizeazaStatusBaterie(battery);
         };
     });
+    
+    //Mobile JavaScript Application Development de Adrian Kosmaczewski - pagina 17
+    
+    function deviceOnline(e) { 
+        document.querySelector('#retea').textContent = 'conectat la retea';
+    };
+    function deviceOffline(e) { 
+        document.querySelector('#retea').textContent = 'deconectat de la retea';
+    };
+    
+    if (Modernizr.applicationcache) {
+        window.addEventListener("online", deviceOnline, false);
+        window.addEventListener("offline", deviceOffline, false);
+    }
+        
 };
 
 
