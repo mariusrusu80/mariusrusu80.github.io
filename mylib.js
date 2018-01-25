@@ -48,6 +48,11 @@ function afiseazaInformatii() {
         });
         //afiseaza pie chart-ul
         chart.render();
+        //afisam status retea
+        if (Modernizr.applicationcache) {
+            //este conectat la retea sau nu?
+            document.querySelector('#retea').textContent = navigator.online ? 'conectat la retea' : 'deconectat de la retea';
+        }
     }
 
     //vezi https://www.w3.org/TR/battery-status/
@@ -72,10 +77,10 @@ function afiseazaInformatii() {
     
     function deviceOnline(e) { 
         document.querySelector('#retea').textContent = 'conectat la retea';
-    };
+    }
     function deviceOffline(e) { 
         document.querySelector('#retea').textContent = 'deconectat de la retea';
-    };
+    }
     
     if (Modernizr.applicationcache) {
         window.addEventListener("online", deviceOnline, false);
