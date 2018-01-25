@@ -49,12 +49,10 @@ function afiseazaInformatii() {
         //afiseaza pie chart-ul
         chart.render();
         //afisam status retea
-        if (Modernizr.applicationcache) {
-            //este conectat la retea sau nu?
-            document.querySelector('#retea').textContent = navigator.online ? 'conectat la retea' : 'deconectat de la retea';
-        } else {
-            document.querySelector('#retea').textContent = 'acest dispozitiv nu are suport pt aceasta functie';        
-        }
+        var devOnline = navigator.onLine;
+        //este conectat la retea sau nu?
+        document.querySelector('#retea').textContent = devOnline ? 'conectat la retea' : 'deconectat de la retea';
+
     }
 
     //vezi https://www.w3.org/TR/battery-status/
@@ -74,23 +72,7 @@ function afiseazaInformatii() {
           actualizeazaStatusBaterie(battery);
         };
     });
-    
-    //Mobile JavaScript Application Development de Adrian Kosmaczewski - pagina 17
-    //https://modernizr.com/
-    function deviceOnline(e) { 
-        document.querySelector('#retea').textContent = 'conectat la retea';
-    }
-    function deviceOffline(e) { 
-        document.querySelector('#retea').textContent = 'deconectat de la retea';
-    }
-    
-    if (Modernizr.applicationcache) {
-        window.addEventListener("online", deviceOnline, false);
-        window.addEventListener("offline", deviceOffline, false);
-    } else {
-       //nu este suport pt asta 
-    }
-        
+           
 };
 
 
