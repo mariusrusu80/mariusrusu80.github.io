@@ -1,5 +1,16 @@
 <!DOCTYPE html>
-<!-- deschidem cu http://htmlpreview.github.io -->
+<!-- 
+Proiect Rusu Marius
+
+deschidem in browser: 
+http://htmlpreview.github.io/?https://github.com/mariusrusu80/mariusrusu80.github.io/blob/master/proiect.html
+
+Documentatie pentru afisarea bateriei folosita de pe: 
+https://www.w3.org/TR/battery-status/
+
+Librarie pie chart folosita de pe: 
+http://canvasjs.com/
+-->
 <html>
 <head>
 <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
@@ -11,12 +22,16 @@
 
 <button onclick="afiseazaInformatii()">Afisare informatii</button>
 
-<!-- bateria -->
-<div id="charging">(charging state unknown)</div>
-<div id="level">(battery level unknown)</div>
-<div id="dischargingTime">(discharging time unknown)</div>
+<!-- status baterie -->
 
-<div id="incarcareBaterie" style="height: 360px; width: 100%;"></div>
+<!-- este conectat / deconectat la incarcator -->
+<div id="incarcare">(status incarcare necunoscut)</div>
+<!--  nivelul bateriei -->
+<div id="nivelBaterie">(nivel baterie necunoscut)</div>
+<!-- timpul de descarcare (in minute) -->
+<div id="timpDescarcare">(timp descarcare necunoscut)</div>
+<!-- pie chart nivel baterie pentru vizualizare rapida -->
+<div id="pieIncarcareBaterie" style="height: 360px; width: 100%;"></div>
 <br/>
 
 
