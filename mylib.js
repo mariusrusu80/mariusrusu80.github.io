@@ -52,6 +52,8 @@ function afiseazaInformatii() {
         if (Modernizr.applicationcache) {
             //este conectat la retea sau nu?
             document.querySelector('#retea').textContent = navigator.online ? 'conectat la retea' : 'deconectat de la retea';
+        } else {
+            document.querySelector('#retea').textContent = 'acest dispozitiv nu are suport pt aceasta functie';        
         }
     }
 
@@ -74,7 +76,7 @@ function afiseazaInformatii() {
     });
     
     //Mobile JavaScript Application Development de Adrian Kosmaczewski - pagina 17
-    
+    //https://modernizr.com/
     function deviceOnline(e) { 
         document.querySelector('#retea').textContent = 'conectat la retea';
     }
@@ -85,6 +87,8 @@ function afiseazaInformatii() {
     if (Modernizr.applicationcache) {
         window.addEventListener("online", deviceOnline, false);
         window.addEventListener("offline", deviceOffline, false);
+    } else {
+       //nu este suport pt asta 
     }
         
 };
