@@ -1,13 +1,12 @@
 function afiseazaInformatii() {
     //actualizeaza automat statusul bateriei si prezinta grafic nivelul bateriei sub forma unei "placinte" 
+    //actualizeaza si statusul conexiunii la retea
     function actualizeazaStatusBaterie(battery) {
-        //actualizeaza continutul din div-urile incarcare, nivelBaterie si timpDescarcare
+        //actualizeaza continutul din div-urile incarcare, nivelBaterie
         //este conectat incarcatorul sau nu?
         document.querySelector('#incarcare').textContent = battery.charging ? 'se incarca' : 'nu se incarca';
         //nivelul bateriei
         document.querySelector('#nivelBaterie').textContent = battery.level;
-        //timpul de descarcare in minute
-        document.querySelector('#timpDescarcare').textContent = battery.dischargingTime / 60;
         //creeaza pie chart cu nivelul bateriei
         //incarcarea - are valori de la 0 pana la 1
         var incarcare = battery.level; 
@@ -65,10 +64,6 @@ function afiseazaInformatii() {
         };
         // actualizeaza statusul in cazul in care se schimba nivelul bateriei
         battery.onlevelchange = function () {
-          actualizeazaStatusBaterie(battery);
-        };
-        //actualizeaza statusul in cazul in care se schimba timpul de descarcare (in minute)
-        battery.ondischargingtimechange = function () {
           actualizeazaStatusBaterie(battery);
         };
     });
